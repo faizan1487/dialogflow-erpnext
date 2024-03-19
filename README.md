@@ -29,7 +29,7 @@ pip install -r requirements.txt
 Copy code
 python manage.py runserver
 
-4-Post request to api endpoint
+4-Post request to api endpoint from dialogflow fulfillment webhook
 
 http://127.0.0.1:8000/core/api/create_lead/
 
