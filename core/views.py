@@ -16,14 +16,26 @@ def create_lead(request):
 
     # Make request to ERPNext API to create a new lead record
     erpnext_api_url = 'https://your_erpnext_instance/api/resource/Lead'
+
+    api_key = ""
+    secret_key = ""
+
+
+    headers = {
+            'Authorization': f'token {api_key}:{secret_key}',
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+    }
+
     erpnext_data = {
         'first_name': first_name,
         'status': status,
         'company': company
         # Add other fields as necessary
     }
-    response = requests.post(erpnext_api_url, json=erpnext_data)
 
+
+    response = requests.post(erpnext_api_url, headers=headers, json=erpnext_data)
     if response.status_code == 200:
         return Response({'message': 'Lead created successfully'}, status=200)
     else:
